@@ -1,12 +1,9 @@
-name: Release (publish npm + deploy site)
+name: Release (publish npm)
 
 # Runs when a release/* branch is pushed/created. Builds the package and
-# publishes it to npm, then builds the static site and deploys it to Firebase
-# Hosting in the GCP project `smalldat`.
-#
-# Requires:
-#   - NPM_TOKEN secret (npm automation token with publish rights)
-#   - GCP_WIF_PROVIDER / GCP_DEPLOY_SA secrets (Workload Identity Federation)
+# publishes it to npm (Trusted Publishing, see the step below).
+# The playground demo is no longer deployed from here (the Firebase project
+# `smalldat` was deleted on 2026-11-16); it will move to bmesoft.eu.
 
 on:
   push:
@@ -20,7 +17,7 @@ concurrency:
 
 permissions:
   contents: read
-  id-token: write # npm provenance + Workload Identity Federation
+  id-token: write # npm provenance (Trusted Publishing)
 
 jobs:
   e2e:
@@ -72,21 +69,3 @@ jobs:
       # id-token: write permission set above. Provenance is automatic.
       - name: Publish to npm
         run: npm publish --access public
-
-      - name: Build static site
-        run: npm run build:site
-
-      - name: Authenticate to Google Cloud (WIF)
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
-          service_account: ${{ secrets.GCP_DEPLOY_SA }}
-
-      - name: Deploy to Firebase Hosting
-        run: |
-          npm install -g firebase-tools
-          firebase deploy \
-            --only hosting:sandycoast \
-            --project smalldat \
-            --non-interactive \
-            --message "release ${GITHUB_SHA::7}"

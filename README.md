@@ -4,7 +4,6 @@ High-performance visual components rendered as **points/sand** — no SVG.
 First component: a sand bar chart where thousands of grains pour in and settle
 into bars. WebGPU-first, Canvas2D fallback.
 
-### ▶ Live demo: **[sandycoast.smalldat.com](https://sandycoast.smalldat.com/)**
 ### ▶ **[Stackblitz interactive example](https://stackblitz.com/github/bmesoft/sandycoast/tree/main/examples/stackblitz-demo?file=main.ts)**
 
 Interactive playground — tweak grain density, animation, bars, and live data in
@@ -160,7 +159,7 @@ Static docs (no build step) are served from [GitHub Pages](https://bmesoft.githu
 
 **Publish to GitHub Pages:** Settings → Pages → *Deploy from a branch* → branch
 `main`, folder `/docs` → Save. A `.nojekyll` file is included so the HTML is
-served as-is. (This is independent of the Vite/Firebase playground deploy.)
+served as-is.
 
 ## Requests & contact
 

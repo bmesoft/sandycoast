@@ -1,6 +1,7 @@
 # Plan 07 — Production packaging & deploy to GCP (`sandycoast.smalldat.com`)
 
-Status: **CONFIGURED — awaiting one-time GCP/DNS setup** (see §5)
+Status: **RETIRED (2026-11-16)** — the GCP project `smalldat` was deleted and the Firebase deploy
+removed from `publish.yml`; the demo will be published on bmesoft.eu instead.
 Target URL: `https://sandycoast.smalldat.com`
 GCP project: `smalldat` (billing enabled, deploy stays in free tier)
 

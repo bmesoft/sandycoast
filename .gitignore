@@ -6,5 +6,3 @@ test-results
 playwright-report
 blob-report
 .DS_Store
-.firebase
-firebase-debug.log
