@@ -11,11 +11,11 @@ Interactive playground — tweak grain density, animation, bars, and live data i
 the browser. No install needed.
 
 **Docs:** full property reference and examples live at the
-[documentation site](https://smalldat.github.io/sandycoast/) (a static
+[documentation site](https://bmesoft.github.io/sandycoast/) (a static
 GitHub Pages site). **License:** dual-licensed — free for non-commercial use, paid
 commercial license for revenue-generating organizations. See
-[LICENSE](https://github.com/smalldat/sandycoast/blob/main/LICENSE) and the
-[License page](https://smalldat.github.io/sandycoast/license.html).
+[LICENSE](https://github.com/bmesoft/sandycoast/blob/main/LICENSE) and the
+[License page](https://bmesoft.github.io/sandycoast/license.html).
 
 ## Install / dev
 
@@ -94,7 +94,7 @@ animation: {
 The pure array helpers behind the methods — `patchPoints`, `appendPoints`,
 `removePoints` — are exported for use off-chart. The playground's **Live data**
 toolbar (with **Continuous update** / **Continuous addition** toggles) drives
-them; see [plans/05-live-data-update-add-remove.md](https://github.com/smalldat/sandycoast/blob/main/plans/05-live-data-update-add-remove.md).
+them; see [plans/05-live-data-update-add-remove.md](https://github.com/bmesoft/sandycoast/blob/main/plans/05-live-data-update-add-remove.md).
 
 ## Data model (generic to all visuals)
 
@@ -108,7 +108,7 @@ Grains live in a Structure-of-Arrays buffer uploaded to the GPU once. Each frame
 the CPU only bumps a `now` uniform; the vertex shader derives every grain's
 position via `mix(start, target, ease(t)) + fading jitter`. Hover uses a cheap
 CPU bar-region hit-test; the hovered `barId` drives a shader highlight and extra
-jitter. See [plans/01-bar-chart-sand-rendering.md](https://github.com/smalldat/sandycoast/blob/main/plans/01-bar-chart-sand-rendering.md).
+jitter. See [plans/01-bar-chart-sand-rendering.md](https://github.com/bmesoft/sandycoast/blob/main/plans/01-bar-chart-sand-rendering.md).
 
 ## Status
 
@@ -116,9 +116,9 @@ v0: data model, scales (linear/time/band), grain packing, WebGPU + Canvas2D
 backends, `BarChart` with pour-in, morph `update()`, and hover interaction.
 Plan 02: axes/ticks/labels, positionable legend, current-value readout.
 Plan 03: per-bar solid **fill + border** that fade in while the sand particles
-fade out (`bars` config; see [plans/03-bar-borders-fill.md](https://github.com/smalldat/sandycoast/blob/main/plans/03-bar-borders-fill.md)).
+fade out (`bars` config; see [plans/03-bar-borders-fill.md](https://github.com/bmesoft/sandycoast/blob/main/plans/03-bar-borders-fill.md)).
 Plan 05: live **`update` / `add` / `remove`** with smooth border tween + grain
-morph, no full re-pour (see [plans/05-live-data-update-add-remove.md](https://github.com/smalldat/sandycoast/blob/main/plans/05-live-data-update-add-remove.md)).
+morph, no full re-pour (see [plans/05-live-data-update-add-remove.md](https://github.com/bmesoft/sandycoast/blob/main/plans/05-live-data-update-add-remove.md)).
 `WindRoseChart`: a two-indicator data model (`WindDataSet` — one time
 dimension plus direction and intensity), readings binned by direction into
 compass sectors and stacked as annular **petal segments** (`petals.mode`:
@@ -127,7 +127,7 @@ per-sector cap that **merges** its tail rather than dropping readings,
 latest-value highlighting, a **time table** (`table`) whose rows and petals
 select both ways, and **overridable mouse events** (`interaction.mouse`) whose
 hooks can run, defer or cancel the built-in behaviour.
-See [plans/12-windrose-chart.md](https://github.com/smalldat/sandycoast/blob/main/plans/12-windrose-chart.md).
+See [plans/12-windrose-chart.md](https://github.com/bmesoft/sandycoast/blob/main/plans/12-windrose-chart.md).
 `CandlestickChart`: OHLC + live-price data (`OhlcDataSet`), sand bodies that
 resolve into solid candles with always-solid high-low wicks, a **configurable
 rising/falling colour rule** (`candles.direction`: `openClose` / `closeClose` /
@@ -135,7 +135,7 @@ rising/falling colour rule** (`candles.direction`: `openClose` / `closeClose` /
 a **live-price line** at the latest `actual`, an instrument slider shared with
 the pie chart, and **overridable mouse events** (`interaction.mouse`, the
 cancellable hook contract shared with the wind rose).
-See [plans/13-candlestick-chart.md](https://github.com/smalldat/sandycoast/blob/main/plans/13-candlestick-chart.md).
+See [plans/13-candlestick-chart.md](https://github.com/bmesoft/sandycoast/blob/main/plans/13-candlestick-chart.md).
 `LineChart`: solid line / spline / **stacked area** (`line.stack`), grain count
 bounded by ribbon area not point count (`maxGrains` is a hard ceiling), a
 line-only morph (`animation.morphGrains: false`), and a `currentValue` cursor
@@ -145,18 +145,18 @@ Planned next: WebGL2 fallback, more chart types, framework wrappers.
 
 ## Documentation
 
-Static docs (no build step) are served from [GitHub Pages](https://smalldat.github.io/sandycoast/), structured by visual:
+Static docs (no build step) are served from [GitHub Pages](https://bmesoft.github.io/sandycoast/), structured by visual:
 
-- [Overview + install/publish](https://smalldat.github.io/sandycoast/index.html)
-- [Data model & shared config](https://smalldat.github.io/sandycoast/data-model.html)
-- [Events & custom drawing](https://smalldat.github.io/sandycoast/events-and-layers.html) — cancellable `click`/`drag`/`pan`/`zoom`/`data*` events and the drawing-layer API every chart shares
-- [Bar chart](https://smalldat.github.io/sandycoast/bar-chart.html) — every config property, methods, events, examples
-- [Line chart](https://smalldat.github.io/sandycoast/line-chart.html)
-- [Scatter chart](https://smalldat.github.io/sandycoast/scatter-chart.html)
-- [Pie chart](https://smalldat.github.io/sandycoast/pie-chart.html)
-- [Wind rose](https://smalldat.github.io/sandycoast/windrose-chart.html) — petal binning, bands, time table
-- [Candlestick chart](https://smalldat.github.io/sandycoast/candlestick-chart.html) — OHLC, colour rules, live price
-- [License](https://smalldat.github.io/sandycoast/license.html)
+- [Overview + install/publish](https://bmesoft.github.io/sandycoast/index.html)
+- [Data model & shared config](https://bmesoft.github.io/sandycoast/data-model.html)
+- [Events & custom drawing](https://bmesoft.github.io/sandycoast/events-and-layers.html) — cancellable `click`/`drag`/`pan`/`zoom`/`data*` events and the drawing-layer API every chart shares
+- [Bar chart](https://bmesoft.github.io/sandycoast/bar-chart.html) — every config property, methods, events, examples
+- [Line chart](https://bmesoft.github.io/sandycoast/line-chart.html)
+- [Scatter chart](https://bmesoft.github.io/sandycoast/scatter-chart.html)
+- [Pie chart](https://bmesoft.github.io/sandycoast/pie-chart.html)
+- [Wind rose](https://bmesoft.github.io/sandycoast/windrose-chart.html) — petal binning, bands, time table
+- [Candlestick chart](https://bmesoft.github.io/sandycoast/candlestick-chart.html) — OHLC, colour rules, live price
+- [License](https://bmesoft.github.io/sandycoast/license.html)
 
 **Publish to GitHub Pages:** Settings → Pages → *Deploy from a branch* → branch
 `main`, folder `/docs` → Save. A `.nojekyll` file is included so the HTML is
@@ -165,7 +165,7 @@ served as-is. (This is independent of the Vite/Firebase playground deploy.)
 ## Requests & contact
 
 Want a new chart type or a special/custom visual? Open a
-[GitHub issue](https://github.com/smalldat/sandycoast/issues) or email
+[GitHub issue](https://github.com/bmesoft/sandycoast/issues) or email
 <office-dat@smalldat.com>.
 
 ## License
@@ -178,5 +178,5 @@ Dual-licensed:
   revenue-generating product, service, or internal tool needs a paid commercial
   license. Contact <office-dat@smalldat.com>.
 
-Full terms in [LICENSE](https://github.com/smalldat/sandycoast/blob/main/LICENSE). The `LICENSE` text is a starting template —
+Full terms in [LICENSE](https://github.com/bmesoft/sandycoast/blob/main/LICENSE). The `LICENSE` text is a starting template —
 have a lawyer review it before relying on it commercially.
