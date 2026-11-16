@@ -4,13 +4,13 @@
   "description": "High-performance point/sand-based visual components (not SVG).",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
-  "homepage": "https://github.com/smalldat/sandycoast#readme",
+  "homepage": "https://github.com/bmesoft/sandycoast#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smalldat/sandycoast.git"
+    "url": "git+https://github.com/bmesoft/sandycoast.git"
   },
   "bugs": {
-    "url": "https://github.com/smalldat/sandycoast/issues"
+    "url": "https://github.com/bmesoft/sandycoast/issues"
   },
   "sideEffects": false,
   "main": "./dist/index.js",
